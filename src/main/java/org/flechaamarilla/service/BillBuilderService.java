@@ -1,4 +1,4 @@
-package org.flechaamarilla;
+package org.flechaamarilla.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.xml.bind.JAXBContext;

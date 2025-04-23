@@ -6,7 +6,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import org.flechaamarilla.BillBuilderService;
+import org.flechaamarilla.service.BillBuilderService;
 import org.flechaamarilla.client.ValidateClient;
 import org.flechaamarilla.dto.BillRequestDTO;
 import org.flechaamarilla.model.BillXML;
@@ -30,7 +30,7 @@ public class BillResource {
         String xml = builder.generarXML(dto);
 
         try {
-            // Attempt to validate the bill
+
             Response validationResponse = validateClient.validateBill(xml);
 
             // If we get a successful response, return the XML with validated status
