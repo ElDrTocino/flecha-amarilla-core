@@ -31,21 +31,21 @@ public class BillBuilderService {
             comprobante.setFormaPago(dto.getFormaPago());
             comprobante.setMetodoPago(dto.getMetodoPago());
             comprobante.setMoneda(dto.getMoneda());
-            comprobante.setLugarExpedicion("06000"); // CDMX, ejemplo
+            comprobante.setLugarExpedicion("06000"); // CDMX, example
 
             //mock values to pass structure validation
             comprobante.setSello("SELLOFAKE1234567890...");
             comprobante.setCertificado("CERTIFICADOB64...");
             comprobante.setNoCertificado("30001000000300023708");
-            comprobante.setTipoDeComprobante(CTipoDeComprobante.I); // Ingreso
-            comprobante.setExportacion("01"); // Operación nacional
+            comprobante.setTipoDeComprobante(CTipoDeComprobante.I); // Income
+            comprobante.setExportacion("01"); // Manual operation
 
 
 
             Emisor emisor = new Emisor();
             emisor.setRfc(dto.getRfcEmisor());
             emisor.setNombre(dto.getNombreEmisor());
-            emisor.setRegimenFiscal("601"); // General de Ley Personas Morales
+            emisor.setRegimenFiscal("601"); // General law for legal entities
             comprobante.setEmisor(emisor);
 
             Receptor receptor = new Receptor();
@@ -68,8 +68,8 @@ public class BillBuilderService {
                 concepto.setValorUnitario(BigDecimal.valueOf(conceptoDTO.getValorUnitario()));
                 concepto.setImporte(BigDecimal.valueOf(conceptoDTO.getImporte()));
                 conceptos.getConcepto().add(concepto);
-                concepto.setObjetoImp("01"); // <- esto es obligatorio para CFDI 4.0
-                concepto.setClaveUnidad("H87"); // Ejemplo: H87 = Pieza
+                concepto.setObjetoImp("01"); // <- This is mandatory for cfdi 4.0
+                concepto.setClaveUnidad("H87"); // Example: H87 = Part
                 total = total.add(BigDecimal.valueOf(conceptoDTO.getImporte()));
             }
 
